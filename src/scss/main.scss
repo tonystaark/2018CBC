@@ -1,6 +1,112 @@
 // @import 'https://fonts.googleapis.com/css?family=Karla';
+html,body,div,span,applet,object,iframe,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,dl,dt,dd,ol,ul,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,label,legend,p,blockquote,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-weight:inherit;font-style:inherit;font-size:100%;font-family:inherit;vertical-align:baseline;}body{line-height:1;color:black;background:white;}:focus{outline:0;}table{border-collapse:collapse;border-spacing:0;}caption,th,td{text-align:left;font-weight:normal;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}ol,ul{list-style:none;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}blockquote:before,blockquote:after,q:before,q:after{content:"";}blockquote,q{quotes:"" "";}abbr,acronym{border:0;}
+
 // ==========================
-//      NAV BAR
+//    DEFAULT SETTING
+// ==========================
+$font1: Georgia, 'Vollkorn', Times, Times New Romans, serif;
+$font2: 'Titillium Web', Helvetica Neue, Helvetica, sans-serif;
+$darkBlue: rgb(12,28,53);
+$black: #000000;
+$silver: #fbfbfb;
+$blackTransparent: rgba(0,0,0,0.9);
+$white: #ffffff;
+$universalShadow:0 2px 6px 0 rgba(155,155,155,0.50);
+$shadowTransition: 0.3s box-shadow ease;
+
+.bold-600{
+  font-weight: 600;
+}
+
+.bold-400{
+  font-weight: 400;
+}
+.universal-shadow {
+  box-shadow: $universalShadow;
+  transition: $shadowTransition
+}
+
+
+// ==========================
+//      MIXIN
+// ==========================
+
+@mixin bp($point) {
+  @if $point == max-xsm {  //col s
+    @media (max-width: 400px) { @content; }
+  }
+  @if $point == max-sm {  //col s
+      @media (max-width: 600px) { @content; }
+  }
+  @else if $point == min-sm { //col m
+      @media (min-width: 601px) { @content; }
+  }
+  @else if $point == max-md {
+      @media (max-width: 992px) { @content; }
+  }
+  @else if $point == min-md {    //col l
+      @media (min-width: 993px) { @content; }
+  }
+  @else if $point == max-lg {
+      @media (max-width: 1200px) { @content; }
+  }
+  @else if $point == min-lg {
+      @media (min-width: 1201px) { @content; }
+  }
+  @else if $point == max-xl {
+    @media (max-width: 1600px) { @content; }
+  }
+  @else if $point == min-xl {
+    @media (min-width: 1601px) { @content; }
+  }
+  @else if $point == min-ipadpro{
+    @media (min-height: 1366px) and (min-width: 1024px) { @content;}
+  }
+    /* CSS stuff */
+}
+
+@mixin setBPMax($value){
+@media (max-width: $value) { 
+  @content; 
+}
+}
+
+@mixin setBPMin($value){
+@media (min-width: $value) { 
+  @content; 
+}
+}
+@mixin transition($transition) {
+  -moz-transition:    $transition;
+  -o-transition:      $transition;
+  -webkit-transition: $transition;
+  transition:         $transition;
+}
+
+// ==========================
+//     FONT TYPES
+// ==========================
+a{
+  font-family: $font2;
+  color: $darkBlue;
+}
+h1{
+  font-family: $font1;
+  font-size: 2.3rem
+}
+h2{
+  font-family: $font2;
+  font-size:2rem;
+}
+
+h3{
+  font-family: $font2;
+  font-size:1rem;
+}
+
+
+// ==========================
+//     Desktop Nav
 // ==========================
 *{
 	box-sizing: border-box;
@@ -8,28 +114,27 @@
 body{
 	min-height: 100vh;
 	background: linear-gradient(15deg, #25ddf5, #53f);
-	font-family: karla;
+	font-family: $font1;
 	color: #666;
-	font-size: 18px;
 	-webkit-font-smoothing: antialiased;
 }
 
-h1,h2,h3,h4,h5,h6{
-	color: #444;
-}
 
 header{
+  background: white;
 	position: relative;
-	padding: 20px 0 0;
+	padding: 10px 0;
 	transform-style: preserve3d;
-	perspective: 3000px;
+  perspective: 3000px;
+  @extend .bold-600;
 }
 
 .logo{padding-left:50px}
 .menu{
 	list-style: none;
 	margin: 0;
-	padding-left: 0;
+  padding-left: 0;
+  padding-top:5px;
   float:right;
   padding-right: 50px;
   li{
@@ -42,7 +147,7 @@ header{
 		padding: 20px 20px;
 		display: block;
 		text-decoration: none;
-		color: white;
+		color: $darkBlue;
 	}
 	
 	&__item{
@@ -63,33 +168,50 @@ header{
 		position: absolute;
 		width: 100%;
 		left: 0;
-		top: 100%;
+    top: 100%;
+    filter: drop-shadow(0px 3px 4px rgba(124, 124, 124, 0.7));
+
 	}
 	
 	&__bg, &__arrow{
-		position: absolute;
-	}
+    position: absolute;
+  }
+  
+
+// // //FOR RESOURCES AND COMPANIES TABS HOVER
+// .cd-morph-dropdown .content:hover li{
+//   color: #DDE5ED;     // Dim all other elements
+//   }
+  
+//   .cd-morph-dropdown .content li:hover{
+//   color: #000;// Not the hovered one
+//   }
+
 	&__arrow{
 		width: 0;
 		height: 0;
-		border-width: 10px;
-		border-style: solid;
-		border-color: transparent transparent white;
-		top: -20px;
+		// border-width: 10px;
+		// border-style: solid;
+    // border-color: transparent transparent $white;
+    border: 8px solid transparent;
+    border-bottom-color: #FFFFFF;
+		top: -15px;
 		opacity: 0;
-		transition: .20s ease;
+    @include transition(  0.2s ease);
 		pointer-events: none;
 	}
 	&__bg{
 		width: 450px;
 		height: 400px;
-		background-color: white;
-		opacity: 0;
-		transition: .25s ease;
+    background-color:  $white;
+    opacity: 0;
+    // @extend .universal-shadow;
+    @include transition(  0.25s ease);
 		border-radius: 5px;
 		overflow: hidden;
 		z-index: -1;
-		
+    
+    
 		&-bottom{
 			background-color: #fafafa;
 			position: absolute;
@@ -97,14 +219,14 @@ header{
 			left: 0;
 			top: 300px;
 			height: 700px;
-			transition: .3s ease;
+      @include transition(  0.3s ease);
 		}
 	}
 	
 	&__wrap{
 		overflow: hidden;
 		position: absolute;
-		transition: .25s ease;
+    @include transition(  0.25s ease);
 		z-index: 1;
 		
 		.top-section,.bottom-section{
@@ -117,16 +239,16 @@ header{
 		&__content{
 			position: absolute;
 			opacity: 0;
-			transition: .25s ease;
+      @include transition(  0.25s ease);
 			min-width: 200px;
-			
+	
 			ul{
 				list-style: none;
 				padding-left: 0;
-				margin: 0;
+        margin: 0;
 			}
 			a{
-				color: inherit;
+
 				text-decoration: none;
 				display: block;
 				padding: 5px 0;
@@ -137,20 +259,27 @@ header{
 		
 		&.active{
 			.dropdown-menu__content{
-				opacity: 1;
+        opacity: 1;
+        li h3{
+          @extend .bold-400;
+          @include transition(  0.3s ease);
+        }
+        &:hover h3{
+          color: #DDE5ED;
+        }
+        li:hover h3{
+          color: $darkBlue;
+        }
 			}
 		}
-		
 	}
 	
 	
 }
 #location .dropdown-menu__content{
-	width: 640px;
+	width: 300px;
 }
-#developer .dropdown-menu__content{
-	width: 400px;
-}
+
 .col-2{
 	display: flex;
 	>ul,>div{
@@ -161,12 +290,10 @@ header{
 	.col-2{
 		li{
 			display: block;
-			padding: 20px 20px 10px;
+			// padding: 20px 20px 10px;
 			
 			h3{
-				font-size: 18px;
 				margin: 0 0 10px;
-				color: turquoise;
 			}
 			p{
 				color: #999;
@@ -177,16 +304,144 @@ header{
 	}
 }
 
-.menu-title{
-	margin: 0 0 10px;
-	font-size: 18px;
-	color: #2196F3
-}
-.info{
-	line-height: 1.7;
-}
 
 .logo img{
   max-width:300px;
   height:auto;
+}
+
+
+
+// ==========================
+//     Mobile Nav
+// ==========================
+
+// SideBar Toggle Button
+header.hide-on-large-only{
+  padding:0;
+  .header-item{
+    padding:10px 0;
+    height:50px;
+    .left{
+      padding-left:25px;
+      img{max-width:150px;}
+    }
+  }
+  [menu-dropdown]{
+    
+    ul{
+      &:not(#location){margin-top:10px;}
+      li{
+        padding: 15px 15px;
+        border-bottom: 1px solid #DDE5ED; 
+        &{
+          a:after{
+            content: '';
+            background: url('/src/images/svg/arrow-right.svg') no-repeat 0 0;
+            width:5px;
+            height: 7px;
+            display:inline-block;
+            margin-left:5px;
+            @include transition( all 0.3s);         
+          }
+          &[data-sub="location"]{
+            a:after{
+              transform: rotate(90deg);
+            }
+            &.active{
+              &+ul{display:block}
+              a:after{
+                transform: rotate(270deg);
+              }
+            }
+          }
+          &:not([data-sub="location"]):hover{
+            a:after{
+              margin-left:10px;
+            }
+          }
+        }
+  
+      }
+      ul{
+        display:none;
+        background: $silver;
+        border-bottom: 1px solid #DDE5ED; 
+        li{
+          padding: 15px 25px;
+          border-bottom: none;
+          a:after{
+            content:''
+          }
+        }
+      }
+    }
+  }
+}
+
+.sidebar-toggle{
+  z-index: 1;
+  border-radius: 1px;
+  position: absolute;
+  right: 25px;
+  // top: 20px;
+  float: right;
+  // background-color: #4BAD00;
+  padding-top: 9px;
+  padding-right: 9.45px;
+  padding-bottom: 9px;
+  padding-left: 9.55px;
+  @include transition( all 0.3s);
+  
+  span{
+    
+    display: block;
+    margin-bottom: 3px;
+    width: 16px;
+    height: 2px;
+    background-color: $black;
+    &:nth-child(1), &:nth-child(3){
+      @include transition( all 0.3s);
+    } 
+    &:nth-child(3){
+      margin-bottom: 0px;
+    }
+  }
+
+  &.active{
+    background: initial;
+    
+    span{
+      // background-color: $black;
+      &:nth-child(1),
+      &:nth-child(3){
+          transform: translate(0px, 4.5px) rotate(-45deg) scalex(1.3);
+          margin: 0;
+      }
+      &:nth-child(2){
+        visibility:hidden
+      }
+      &:nth-child(3){
+        transform: translate(0px, -2px) rotate(45deg) scalex(1.3);               
+      }
+    }
+  }
+}
+
+[menu-dropdown],[data-dropdown-item] {
+  display:none
+}
+
+
+[menu-dropdown].active, [data-dropdown-item].active{
+  display:block
+}
+
+// ==========================
+//    HEADER IMAGE
+// ==========================
+.header-image{
+  height:40vh;
+  background: url('/src/images/about-slide.png') no-repeat 0 0 ;
+  background-size: 100%;
 }
