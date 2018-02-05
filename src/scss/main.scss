@@ -10,6 +10,7 @@ $darkBlue: rgb(12,28,53);
 $black: #000000;
 $silver: #fbfbfb;
 $blackTransparent: rgba(0,0,0,0.9);
+$grey: rgb(39,35,32);
 $white: #ffffff;
 $universalShadow:0 2px 6px 0 rgba(155,155,155,0.50);
 $shadowTransition: 0.3s box-shadow ease;
@@ -104,6 +105,12 @@ h3{
   font-size:1rem;
 }
 
+p{
+  font-family: $font2;
+  font-size:0.8rem;
+  line-height: 1.2;
+}
+
 
 // ==========================
 //     Desktop Nav
@@ -122,7 +129,10 @@ body{
 
 header{
   background: white;
-	position: relative;
+  position: fixed;
+  top:0;
+  z-index: 999999;
+  width:100%;
 	padding: 10px 0;
 	transform-style: preserve3d;
   perspective: 3000px;
@@ -441,7 +451,21 @@ header.hide-on-large-only{
 //    HEADER IMAGE
 // ==========================
 .header-image{
-  height:40vh;
-  background: url('/src/images/about-slide.png') no-repeat 0 0 ;
-  background-size: 100%;
+  width:100%;
+  margin-top:50px;
+  @include bp(min-md){
+    margin-top:83.39px;
+  }
+
+  
+}
+
+#main-msg{
+  background-color: $grey;
+  margin-top:-3px;
+  padding:20px 20px;
+  color:$white;
+  a{
+    color:$white;
+  }
 }

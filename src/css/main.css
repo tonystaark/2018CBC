@@ -74,6 +74,11 @@ h3 {
   font-family: "Titillium Web", Helvetica Neue, Helvetica, sans-serif;
   font-size: 1rem; }
 
+p {
+  font-family: "Titillium Web", Helvetica Neue, Helvetica, sans-serif;
+  font-size: 0.8rem;
+  line-height: 1.2; }
+
 * {
   box-sizing: border-box; }
 
@@ -86,7 +91,10 @@ body {
 
 header {
   background: white;
-  position: relative;
+  position: fixed;
+  top: 0;
+  z-index: 999999;
+  width: 100%;
   padding: 10px 0;
   transform-style: preserve3d;
   perspective: 3000px; }
@@ -306,8 +314,19 @@ header.hide-on-large-only {
   display: block; }
 
 .header-image {
-  height: 40vh;
-  background: url("/src/images/about-slide.png") no-repeat 0 0;
-  background-size: 100%; }
+  width: 100%;
+  margin-top: 50px;
+  /* CSS stuff */ }
+  @media (min-width: 993px) {
+    .header-image {
+      margin-top: 83.39px; } }
+
+#main-msg {
+  background-color: #272320;
+  margin-top: -3px;
+  padding: 20px 20px;
+  color: #ffffff; }
+  #main-msg a {
+    color: #ffffff; }
 
 /*# sourceMappingURL=main.css.map */
