@@ -4,8 +4,8 @@ html,body,div,span,applet,object,iframe,a,abbr,acronym,address,big,cite,code,del
 // ==========================
 //    DEFAULT SETTING
 // ==========================
-$font1: Georgia, 'Vollkorn', Times, Times New Romans, serif;
-$font2: 'Titillium Web', Helvetica Neue, Helvetica, sans-serif;
+$fontFamily1: Georgia, 'Vollkorn', Times, Times New Romans, serif;
+$fontFamily2: 'Titillium Web', Helvetica Neue, Helvetica, sans-serif;
 $darkBlue: rgb(12,28,53);
 $black: #000000;
 $silver: #fbfbfb;
@@ -87,39 +87,80 @@ $shadowTransition: 0.3s box-shadow ease;
 // ==========================
 //     FONT TYPES
 // ==========================
-a{
-  font-family: $font2;
-  color: $darkBlue;
-}
-h1{
-  font-family: $font1;
+
+// a{color:inherit}
+.font-1{
+  font-family: $fontFamily1;
   font-size: 2.3rem;
   font-style: italic;
   @include bp(max-sm){
     font-size: 1.5rem;
   }
-  
 }
-h2{
-  font-family: $font2;
+
+.font-2{
+  font-family: $fontFamily2;
   font-size:2rem;
   @include bp(max-sm){
     font-size: 1.3rem;
   }
 }
 
-h3{
-  font-family: $font2;
+.font-3{
+  font-family: $fontFamily2;
   font-size:1.5rem;
   @include bp(max-sm){
     font-size: 1.1rem;
   }
 }
 
-p{
-  font-family: $font2;
+.font-4{
+  font-family: $fontFamily2;
+  font-size:1.2rem;
+  // line-height: 1.2;
+  @include bp(max-sm){
+    font-size: 1.1rem;
+  }
+}
+
+
+
+.font-5{
+  font-family: $fontFamily2;
   font-size:1rem;
-  line-height: 1.2;
+  @include bp(max-sm){
+    font-size: 0.9rem;
+  }
+}
+
+
+
+// a{
+//   font-family: $fontFamily2;
+//   color: $darkBlue;
+//   font-size: 2.3rem;
+// }
+
+h1{
+  // @extend .font-1;
+  font-family: $fontFamily1;
+  font-style: italic;
+}
+
+h2{
+  @extend .font-2;
+}
+
+h3{
+  @extend .font-3;
+}
+
+h4{
+  @extend .font-4;
+}
+
+p{
+ @extend .font-5;
 }
 
 
@@ -132,7 +173,7 @@ p{
 body{
 	min-height: 100vh;
 	background: linear-gradient(15deg, #25ddf5, #53f);
-	font-family: $font1;
+	font-family: $fontFamily1;
 	color: #666;
 	-webkit-font-smoothing: antialiased;
 }
@@ -168,7 +209,10 @@ header{
 		padding: 20px 20px;
 		display: block;
 		text-decoration: none;
-		color: $darkBlue;
+    color: $darkBlue;
+    @extend .font-4;
+    
+
 	}
 	
 	&__item{
@@ -269,26 +313,29 @@ header{
         margin: 0;
 			}
 			a{
-
+        color: $darkBlue;
 				text-decoration: none;
 				display: block;
-				padding: 5px 0;
-				
-				&:hover{ color: #333 }
+				padding: 10px 0;
+        &:hover{ color: #333 }
+        h4{
+          @extend .font-5;
+          @extend .bold-600;
+          // font-weight: bold;
+        }
 			}
 		}
 		
 		&.active{
 			.dropdown-menu__content{
         opacity: 1;
-        li h3{
-          @extend .bold-400;
+        li h4{
           @include transition(  0.3s ease);
         }
-        &:hover h3{
+        &:hover h4{
           color: #DDE5ED;
         }
-        li:hover h3{
+        li:hover h4{
           color: $darkBlue;
         }
 			}
@@ -381,6 +428,11 @@ header.hide-on-large-only{
               margin-left:10px;
             }
           }
+
+          a{
+            color: $darkBlue;
+            @extend .font-4;
+          }
         }
   
       }
@@ -391,8 +443,11 @@ header.hide-on-large-only{
         li{
           padding: 15px 25px;
           border-bottom: none;
-          a:after{
-            content:''
+          a{
+            @extend .font-5;
+            &:after{
+              content:''
+            }
           }
         }
       }
