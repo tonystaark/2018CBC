@@ -48,6 +48,9 @@ blockquote, q {
 abbr, acronym {
   border: 0; }
 
+.row {
+  margin-bottom: 0; }
+
 .bold-600, header, .dropdown-menu__content a h4 {
   font-weight: 600; }
 
@@ -58,21 +61,78 @@ abbr, acronym {
   box-shadow: 0 2px 6px 0 rgba(155, 155, 155, 0.5);
   transition: 0.3s box-shadow ease; }
 
-.font-1 {
+.margin-5 {
+  margin-bottom: 5px; }
+
+.margin-10 {
+  margin-bottom: 10px; }
+
+.margin-15 {
+  margin-bottom: 15px; }
+
+.margin-20 {
+  margin-bottom: 20px; }
+
+.margin-30 {
+  margin-bottom: 30px; }
+
+.margin-50 {
+  margin-bottom: 50px;
+  /* CSS stuff */ }
+  @media (max-width: 992px) {
+    .margin-50 {
+      margin-bottom: 30px; } }
+
+.margin-80 {
+  margin-bottom: 80px;
+  /* CSS stuff */ }
+  @media (max-width: 992px) {
+    .margin-80 {
+      margin-bottom: 50px; } }
+
+.margin-100 {
+  margin-bottom: 100px;
+  /* CSS stuff */ }
+  @media (max-width: 992px) {
+    .margin-100 {
+      margin-bottom: 50px; } }
+
+.margin-120 {
+  margin-bottom: 120px;
+  /* CSS stuff */ }
+  @media (max-width: 992px) {
+    .margin-120 {
+      margin-bottom: 80px; } }
+
+.margin-150 {
+  margin-bottom: 150px;
+  /* CSS stuff */ }
+  @media (max-width: 992px) {
+    .margin-150 {
+      margin-bottom: 80px; } }
+
+.margin-200 {
+  margin-bottom: 200px;
+  /* CSS stuff */ }
+  @media (max-width: 992px) {
+    .margin-200 {
+      margin-bottom: 80px; } }
+
+.font-1, h1 {
   font-family: Georgia, "Vollkorn", Times, Times New Romans, serif;
   font-size: 2.3rem;
   font-style: italic;
   /* CSS stuff */ }
   @media (max-width: 600px) {
-    .font-1 {
+    .font-1, h1 {
       font-size: 1.5rem; } }
 
-.font-2, h2 {
+.font-2, h2, .carousel.carousel-slider .carousel-item h2 {
   font-family: "Titillium Web", Helvetica Neue, Helvetica, sans-serif;
   font-size: 2rem;
   /* CSS stuff */ }
   @media (max-width: 600px) {
-    .font-2, h2 {
+    .font-2, h2, .carousel.carousel-slider .carousel-item h2 {
       font-size: 1.3rem; } }
 
 .font-3, h3 {
@@ -91,17 +151,16 @@ abbr, acronym {
     .font-4, h4, .menu a, header.hide-on-large-only [menu-dropdown] ul li a {
       font-size: 1.1rem; } }
 
-.font-5, p, .dropdown-menu__content a h4, header.hide-on-large-only [menu-dropdown] ul ul li a {
+.font-5, p, .dropdown-menu__content a h4, header.hide-on-large-only [menu-dropdown] ul ul li a, .carousel.carousel-slider .carousel-item p {
   font-family: "Titillium Web", Helvetica Neue, Helvetica, sans-serif;
   font-size: 1rem;
   /* CSS stuff */ }
   @media (max-width: 600px) {
-    .font-5, p, .dropdown-menu__content a h4, header.hide-on-large-only [menu-dropdown] ul ul li a {
+    .font-5, p, .dropdown-menu__content a h4, header.hide-on-large-only [menu-dropdown] ul ul li a, .carousel.carousel-slider .carousel-item p {
       font-size: 0.9rem; } }
 
-h1 {
-  font-family: Georgia, "Vollkorn", Times, Times New Romans, serif;
-  font-style: italic; }
+p {
+  line-height: 1.1; }
 
 * {
   box-sizing: border-box; }
@@ -351,9 +410,21 @@ header.hide-on-large-only {
 #pastor-msg {
   background-color: #272320;
   margin-top: -3px;
-  padding: 20px 20px;
-  color: #ffffff; }
+  color: #ffffff;
+  position: relative;
+  max-height: 300px; }
+  #pastor-msg img {
+    width: 150px;
+    height: auto;
+    position: absolute;
+    left: 20px; }
   #pastor-msg a {
     color: #ffffff; }
+  #pastor-msg #front-msg {
+    padding-top: 40px; }
+
+.carousel.carousel-slider .carousel-item {
+  padding: 20px;
+  min-height: unset; }
 
 /*# sourceMappingURL=main.css.map */

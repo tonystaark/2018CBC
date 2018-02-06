@@ -262,5 +262,10 @@ Vue.component('desktop-nav', {
 })
 
 vueapp = new Vue({
-  el: '#wrapper'
+  el: '#wrapper',
+  mounted(){
+    // $('.carousel').carousel();
+    $('.carousel.carousel-slider').carousel({fullWidth: true});
+
+  }
 })
