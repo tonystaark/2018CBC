@@ -64,19 +64,32 @@ a {
 
 h1 {
   font-family: Georgia, "Vollkorn", Times, Times New Romans, serif;
-  font-size: 2.3rem; }
+  font-size: 2.3rem;
+  font-style: italic;
+  /* CSS stuff */ }
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 1.5rem; } }
 
 h2 {
   font-family: "Titillium Web", Helvetica Neue, Helvetica, sans-serif;
-  font-size: 2rem; }
+  font-size: 2rem;
+  /* CSS stuff */ }
+  @media (max-width: 600px) {
+    h2 {
+      font-size: 1.3rem; } }
 
 h3 {
   font-family: "Titillium Web", Helvetica Neue, Helvetica, sans-serif;
-  font-size: 1rem; }
+  font-size: 1.5rem;
+  /* CSS stuff */ }
+  @media (max-width: 600px) {
+    h3 {
+      font-size: 1.1rem; } }
 
 p {
   font-family: "Titillium Web", Helvetica Neue, Helvetica, sans-serif;
-  font-size: 0.8rem;
+  font-size: 1rem;
   line-height: 1.2; }
 
 * {
@@ -321,12 +334,12 @@ header.hide-on-large-only {
     .header-image {
       margin-top: 83.39px; } }
 
-#main-msg {
+#pastor-msg {
   background-color: #272320;
   margin-top: -3px;
   padding: 20px 20px;
   color: #ffffff; }
-  #main-msg a {
+  #pastor-msg a {
     color: #ffffff; }
 
 /*# sourceMappingURL=main.css.map */

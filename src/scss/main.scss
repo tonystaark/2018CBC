@@ -93,21 +93,32 @@ a{
 }
 h1{
   font-family: $font1;
-  font-size: 2.3rem
+  font-size: 2.3rem;
+  font-style: italic;
+  @include bp(max-sm){
+    font-size: 1.5rem;
+  }
+  
 }
 h2{
   font-family: $font2;
   font-size:2rem;
+  @include bp(max-sm){
+    font-size: 1.3rem;
+  }
 }
 
 h3{
   font-family: $font2;
-  font-size:1rem;
+  font-size:1.5rem;
+  @include bp(max-sm){
+    font-size: 1.1rem;
+  }
 }
 
 p{
   font-family: $font2;
-  font-size:0.8rem;
+  font-size:1rem;
   line-height: 1.2;
 }
 
@@ -460,7 +471,7 @@ header.hide-on-large-only{
   
 }
 
-#main-msg{
+#pastor-msg{
   background-color: $grey;
   margin-top:-3px;
   padding:20px 20px;
